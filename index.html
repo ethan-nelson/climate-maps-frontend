@@ -1,23 +1,24 @@
 ---
 layout: default
 ---
+<link rel="stylesheet" href="/static/leaflet-1.0.3/leaflet.css" />
+<script src="/static/leaflet-1.0.3/leaflet.js"></script>
+<style>
+#map {
+  position: absolute;
+  top: 62px;
+  bottom: 0;
+  right: 300px;
+  left: 0;
+}
+</style>
 
 <div class="home">
+  <div id="map"></div>
+<script>
+var map = L.map('map').setView([35, 0], 3);
+L.tileLayer('http://lecuyer.aos.wisc.edu/maps/{z}/{x}/{y}.png').addTo(map);
 
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+</script>
 
 </div>
