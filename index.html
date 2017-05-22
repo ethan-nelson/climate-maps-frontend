@@ -3,6 +3,7 @@ layout: default
 ---
 <link rel="stylesheet" href="/static/leaflet-1.0.3/leaflet.css" />
 <script src="/static/leaflet-1.0.3/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.vectorgrid@1.2.0"></script>
 <style>
 #map {
   position: absolute;
@@ -15,9 +16,48 @@ layout: default
 
 <div class="home">
   <div id="map"></div>
+<script src="test.js"></script>
+
 <script>
-var map = L.map('map').setView([35, 0], 3);
+var map = L.map('map', {worldCopyJump: true}).setView([35, 0], 3);
 L.tileLayer('http://lecuyer.aos.wisc.edu/maps/{z}/{x}/{y}.png').addTo(map);
+
+//var info = L.control();
+//
+//info.onAdd = function(map) {
+//    this._div = L.DomUtil.create('div', 'info');
+//    this.update();
+//    return this._div;
+//};
+//
+//info.update = function(props) {
+//    this._div.innerHTML = '<p>' + (props ? props.name : 'Click a box') + '</p>';
+//};
+//
+//info.addTo(map);
+//
+//function highlightFeature(e) {
+//    layer = e.target;
+//    info.update(layer.feature.properties);
+//};
+//
+//function onEachFeature(feature, layer) {
+//    layer.on({
+//        mouseover: highlightFeature
+//    });
+//}
+//
+//geojson = L.geoJson(test, {onEachFeature: onEachFeature}).addTo(map);
+
+var vectorGrid = L.vectorGrid.slicer( test, {
+    rendererFactory: L.svg.tile, interactive: true})
+       .on('mouseover', function(e) {
+           var properties = e.layer.properties;
+           L.popup().setContent(properties.name)
+               .setLatLng(e.latlng)
+               .openOn(map);
+       })
+            .addTo(map);
 
 </script>
 
