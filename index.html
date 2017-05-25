@@ -1,9 +1,9 @@
 ---
 layout: default
 ---
-<link rel="stylesheet" href="static/leaflet-1.0.3/leaflet.css" />
-<script src="static/leaflet-1.0.3/leaflet.js"></script>
-<script src="static/leaflet.vectorgrid-1.2.0/Leaflet.VectorGrid.bundled.js"></script>
+<link rel="stylesheet" href="{{ 'static/leaflet-1.0.3/leaflet.css' | prepend: site.baseurl }}" />
+<script src="{{ 'static/leaflet-1.0.3/leaflet.js' | prepend: site.baseurl }}"></script>
+<script src="{{ 'static/leaflet.vectorgrid-1.2.0/Leaflet.VectorGrid.bundled.js' | prepend: site.baseurl }}"></script>
 <style>
 #map {
   position: absolute;
@@ -32,7 +32,7 @@ layout: default
 <div class="home">
   <div id="map"></div>
   <div id="content">Select a product...</div>
-<script src="test.js"></script>
+<script src="{{ 'test.js' | prepend: site.baseurl }}"></script>
 
 <script>
 function getColor(d) {
