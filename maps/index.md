@@ -7,14 +7,14 @@ layout: default
 <style>
 #map {
   position: absolute;
-  top: 62px;
+  top: 56px;
   bottom: 0;
   right: 300px;
   left: 0;
 }
 #content {
   position: absolute;
-  top: 62px;
+  top: 56px;
   bottom: 0;
   right: 0;
   width: 295px;
@@ -31,7 +31,22 @@ layout: default
 
 <div class="home">
   <div id="map"></div>
-  <div id="content">Select a product...</div>
+  <div id="content">
+    <h2>Interactive Maps</h2>
+    <p><b>Product:</b> <select id="product-selector">
+                         <option value="rain">Rainfall</option>
+                       </select></p>
+    <p><b>Period:</b> <input type="radio" name="period-selector" value="mission">Mission</input>
+                      <input type="radio" name="period-selector" value="year">Annual</input>
+                      <input type="radio" name="period-selector" value="month">Month</input></p>
+    <div name="time-div" style="display: none; visibility: hidden;"><p><b>Time:</b> <select id="time-selector">
+                    </select></p></div>
+
+
+
+
+  </div>
+
 <script src="{{ 'test.js' | prepend: site.baseurl }}"></script>
 
 <script>
