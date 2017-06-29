@@ -3,7 +3,7 @@ layout: default
 ---
 <link rel="stylesheet" href="{{ 'static/leaflet-1.0.3/leaflet.css' | prepend: site.baseurl }}" />
 <script src="{{ 'static/leaflet-1.0.3/leaflet.js' | prepend: site.baseurl }}"></script>
-<script src="{{ 'static/leaflet.vectorgrid-1.2.0/Leaflet.VectorGrid.bundled.js' | prepend: site.baseurl }}"></script>
+<!-- <script src="{{ 'static/leaflet.vectorgrid-1.2.0/Leaflet.VectorGrid.bundled.js' | prepend: site.baseurl }}"></script> -->
 <script src="{{ 'static/leaflet-ajax/leaflet.ajax.min.js' | prepend: site.baseurl }}"></script>
 <style>
 #map {
