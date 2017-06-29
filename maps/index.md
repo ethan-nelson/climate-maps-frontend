@@ -4,6 +4,7 @@ layout: default
 <link rel="stylesheet" href="{{ 'static/leaflet-1.0.3/leaflet.css' | prepend: site.baseurl }}" />
 <script src="{{ 'static/leaflet-1.0.3/leaflet.js' | prepend: site.baseurl }}"></script>
 <script src="{{ 'static/leaflet.vectorgrid-1.2.0/Leaflet.VectorGrid.bundled.js' | prepend: site.baseurl }}"></script>
+<script src="{{ 'static/leaflet-ajax/leaflet.ajax.min.js' | prepend: site.baseurl }}"></script>
 <style>
 #map {
   position: absolute;
@@ -36,10 +37,22 @@ layout: default
     <p><b>Product:</b> <select id="product-selector">
                          <option value="rain">Rainfall</option>
                        </select></p>
-    <p><b>Period:</b> <input type="radio" name="period-selector" value="mission">Mission
+<!--    <p><b>Period:</b> <input type="radio" name="period-selector" value="mission">Mission
                       <input type="radio" name="period-selector" value="year">Annual
-                      <input type="radio" name="period-selector" value="month">Month</p>
-    <div name="time-div" style="display: none; visibility: hidden;"><p><b>Time:</b> <select id="time-selector">
+                      <input type="radio" name="period-selector" value="month">Month</p> -->
+    <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <select id="time-selector" onchange="changetime();">
+                        <option value="00">2007-01</option>
+                        <option value="01">2007-02</option>
+                        <option value="02">2007-03</option>
+                        <option value="03">2007-04</option>
+                        <option value="04">2007-05</option>
+                        <option value="05">2007-06</option>
+                        <option value="06">2007-07</option>
+                        <option value="07">2007-08</option>
+                        <option value="08">2007-09</option>
+                        <option value="09">2007-10</option>
+                        <option value="10">2007-11</option>
+                        <option value="11">2007-12</option>
                     </select></p></div>
 
 
@@ -47,7 +60,7 @@ layout: default
 
   </div>
 
-<script src="{{ 'test.js' | prepend: site.baseurl }}"></script>
+<!-- <script src="{{ 'test.js' | prepend: site.baseurl }}"></script> -->
 
 <script>
 function getColor(d) {
@@ -96,7 +109,19 @@ function onEachFeature(feature, layer) {
     });
 }
 
-geojson = L.geoJson(test, {onEachFeature: onEachFeature, style: style}).addTo(map);
+//geojson = L.geoJson(test, {onEachFeature: onEachFeature, style: style}).addTo(map);
+
+oldTime = document.getElementById('time-selector').value;
+var geojson = L.geoJson.ajax('{{ 'data/gpcp-' | prepend: site.baseurl }}'+oldTime+'.geojson');
+geojson.addTo(map)
+
+function changetime() {
+    var newTime = document.getElementById('time-selector').value;
+    if (newTime != oldTime) {
+        geojson.refresh('{{ 'data/gpcp-' | prepend: site.baseurl }}'+newTime+'.geojson');
+        oldTime = newTime;
+    }
+}
 
 /*
 var vectorGrid = L.vectorGrid.slicer( test, {
