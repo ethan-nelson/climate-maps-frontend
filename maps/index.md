@@ -64,11 +64,11 @@ layout: default
 
 <script>
 function getColor(d) {
-    return d > 5 ? '#A63603' :
-           d > 4 ? '#E6550D' :
-           d > 3 ? '#FD8D3C' :
-           d > 2 ? '#FDAE6B' :
-           d > 1 ? '#FDD0A2' :
+    return d > 10 ? '#A63603' :
+           d > 8 ? '#E6550D' :
+           d > 6 ? '#FD8D3C' :
+           d > 4 ? '#FDAE6B' :
+           d > 2 ? '#FDD0A2' :
            d > 0 ? '#FEEDDE' :
                    '#FFFFFF';
 };
@@ -112,7 +112,7 @@ function onEachFeature(feature, layer) {
 //geojson = L.geoJson(test, {onEachFeature: onEachFeature, style: style}).addTo(map);
 
 oldTime = document.getElementById('time-selector').value;
-var geojson = L.geoJson.ajax('{{ 'data/gpcp-' | prepend: site.baseurl }}'+oldTime+'.geojson');
+var geojson = L.geoJson.ajax('{{ 'data/gpcp-' | prepend: site.baseurl }}'+oldTime+'.geojson', {onEachFeature: onEachFeature, style: style});
 geojson.addTo(map)
 
 function changetime() {
