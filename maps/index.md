@@ -37,24 +37,10 @@ layout: default
     <p><b>Product:</b> <select id="product-selector">
                          <option value="rain">Rainfall</option>
                        </select></p>
-<!--    <p><b>Period:</b> <input type="radio" name="period-selector" value="mission">Mission
-                      <input type="radio" name="period-selector" value="year">Annual
-                      <input type="radio" name="period-selector" value="month">Month</p> -->
-    <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <select id="time-selector" onchange="changetime();" onclick="changetime();">
-                        <option value="00">2007-01</option>
-                        <option value="01">2007-02</option>
-                        <option value="02">2007-03</option>
-                        <option value="03">2007-04</option>
-                        <option value="04">2007-05</option>
-                        <option value="05">2007-06</option>
-                        <option value="06">2007-07</option>
-                        <option value="07">2007-08</option>
-                        <option value="08">2007-09</option>
-                        <option value="09">2007-10</option>
-                        <option value="10">2007-11</option>
-                        <option value="11">2007-12</option>
-                    </select></p></div>
-
+    <p><b>Period:</b> <input type="radio" name="period-selector" id="period-selector-mission" value="mission" onchange="changeperiod(); changetime();" checked="checked">Mission
+                      <input type="radio" name="period-selector" id="period-selector-year" value="year" onchange="changeperiod(); changetime();">Annual
+                      <input type="radio" name="period-selector" id="period-selector-month" value="month" onchange="changeperiod(); changetime();">Month</p>
+    <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <span id="time-options"></span></p></div>
 
 
 
@@ -111,7 +97,29 @@ function onEachFeature(feature, layer) {
 
 //geojson = L.geoJson(test, {onEachFeature: onEachFeature, style: style}).addTo(map);
 
-oldTime = document.getElementById('time-selector').value;
+function changeperiod() {
+    div = '<select id="time-selector" onchange="changetime();" onclick="changetime();">';
+    if (document.getElementById('period-selector-month').checked) {
+        for (i = 2007; i < 2011; i++) {
+            for (j = 1; j < 13; j++) {
+                div += '<option value="' + i.toString() + ('0'+j.toString()).slice(-2) + '">' + i.toString() + '-' + ('0'+j.toString()).slice(-2) + '</option>';
+            }
+        }
+    } else if (document.getElementById('period-selector-year').checked) {
+        for (i = 2007; i < 2011; i++) {
+            div += '<option value="' + i.toString() + '">' + i.toString() + '</option>';
+        }
+    } else if (document.getElementById('period-selector-mission').checked) {
+        div += '<option value="">Mission</option>';
+    }
+    div += '</select>';
+    document.getElementById('time-options').innerHTML = div;
+}
+
+changeperiod();
+
+
+var oldTime = document.getElementById('time-selector').value;
 var geojson = L.geoJson.ajax('{{ 'data/gpcp-' | prepend: site.baseurl }}'+oldTime+'.geojson', {onEachFeature: onEachFeature, style: style});
 geojson.addTo(map)
 
