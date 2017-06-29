@@ -173,6 +173,11 @@ pre {
 }
 
 
+th {
+  width: -webkit-calc(#{$content-width} / 2);
+  width:         calc(#{$content-width} / 2);
+  font-size: 34px;
+}
 
 /**
  * Clearfix
