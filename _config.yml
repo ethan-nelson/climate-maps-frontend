@@ -11,7 +11,7 @@ email: ethan.nelson@aos.wisc.edu
 description: > # this means to ignore newlines until "baseurl:"
   A resource for viewing global distributions of variables that describe 
   Earth's climate through the energy and water cycles.
-baseurl: "/climate-maps/" # the subpath of your site, e.g. /blog
+baseurl: "/climate-maps" # the subpath of your site, e.g. /blog
 url: "http://lecuyer.aos.wisc.edu" # the base hostname & protocol for your site
 
 # Build settings
