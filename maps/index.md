@@ -36,9 +36,9 @@ layout: default
     <p><b>Product:</b> <select id="product-selector">
                          <option value="rain">Rainfall</option>
                        </select></p>
-    <p><b>Period:</b> <input type="radio" name="period-selector" value="mission">Mission</input>
-                      <input type="radio" name="period-selector" value="year">Annual</input>
-                      <input type="radio" name="period-selector" value="month">Month</input></p>
+    <p><b>Period:</b> <input type="radio" name="period-selector" value="mission">Mission
+                      <input type="radio" name="period-selector" value="year">Annual
+                      <input type="radio" name="period-selector" value="month">Month</p>
     <div name="time-div" style="display: none; visibility: hidden;"><p><b>Time:</b> <select id="time-selector">
                     </select></p></div>
 
