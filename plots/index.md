@@ -29,6 +29,7 @@ layout: default
                       <input type="radio" name="period-selector" id="period-selector-year" value="year" onchange="changeperiod(); changetime();">Annual
                       <input type="radio" name="period-selector" id="period-selector-month" value="month" onchange="changeperiod(); changetime();">Month</p>
     <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <span id="time-options"></span></p></div>
+    <p><a href="" id="download-link">Download data</a></p>
 
 <script>
 function changeperiod() {
