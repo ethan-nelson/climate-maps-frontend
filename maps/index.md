@@ -40,7 +40,7 @@ layout: default
 <!--    <p><b>Period:</b> <input type="radio" name="period-selector" value="mission">Mission
                       <input type="radio" name="period-selector" value="year">Annual
                       <input type="radio" name="period-selector" value="month">Month</p> -->
-    <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <select id="time-selector" onchange="changetime();">
+    <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <select id="time-selector" onchange="changetime();" onclick="changetime();">
                         <option value="00">2007-01</option>
                         <option value="01">2007-02</option>
                         <option value="02">2007-03</option>
