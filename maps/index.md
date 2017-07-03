@@ -10,7 +10,7 @@ layout: default
   position: absolute;
   top: 56px;
   bottom: 0;
-  right: 300px;
+  right: 327px;
   left: 0;
 }
 #content {
@@ -18,7 +18,7 @@ layout: default
   top: 56px;
   bottom: 0;
   right: 0;
-  width: 295px;
+  width: 325px;
 }
 .info {
   padding: 4px 4px;
@@ -37,9 +37,9 @@ layout: default
     <p><b>Product:</b> <select id="product-selector">
                          <option value="rain">Rainfall</option>
                        </select></p>
-    <p><b>Period:</b> <input type="radio" name="period-selector" id="period-selector-mission" value="mission" onchange="changeperiod(); changetime();" checked="checked">Mission
-                      <input type="radio" name="period-selector" id="period-selector-year" value="year" onchange="changeperiod(); changetime();">Annual
-                      <input type="radio" name="period-selector" id="period-selector-month" value="month" onchange="changeperiod(); changetime();">Month</p>
+    <p><b>Period:</b> <label><input type="radio" name="period-selector" id="period-selector-mission" value="mission" onchange="changeperiod(); changetime();" checked="checked"><span class="checkable">Mission</span></label>
+                      <label><input type="radio" name="period-selector" id="period-selector-year" value="year" onchange="changeperiod(); changetime();"><span class="checkable">Annual</span></label>
+                      <label><input type="radio" name="period-selector" id="period-selector-month" value="month" onchange="changeperiod(); changetime();"><span class="checkable">Month</span></label></p>
     <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <span id="time-options"></span></p></div>
     <p><a href="" id="download-link">Download data</a></p>
 
