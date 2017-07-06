@@ -42,7 +42,7 @@ layout: default
                       <label><input type="radio" name="period-selector" id="period-selector-year" value="year" onchange="changeperiod(); changetime();"><span class="checkable">Annual</span></label><br />
                       <label><input type="radio" name="period-selector" id="period-selector-month" value="month" onchange="changeperiod(); changetime();"><span class="checkable">Month</span></label></p>
     <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <span id="time-options"></span></p></div>
-    <p><a href="" id="download-link">Download data</a></p>
+    <p><a href="{{ 'download' | prepend: site.baseurl }}" id="download-link">Download data</a></p>
 
   </div>
 
