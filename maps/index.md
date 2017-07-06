@@ -43,7 +43,7 @@ title: Maps
                       <label><input type="radio" name="period-selector" id="period-selector-year" value="year" onchange="changeperiod(); changetime();"><span class="checkable">Annual</span></label><br />
                       <label><input type="radio" name="period-selector" id="period-selector-month" value="month" onchange="changeperiod(); changetime();"><span class="checkable">Month</span></label></p>
     <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <span id="time-options"></span><br />
-    <button class="error" style="float: left;" onClick="selectForward();">\/</button> <button class="error" style="float: right;" onClick="selectBackward();">/\</button></p><br /><br /></div>
+    <button class="error" style="float: left;" onClick="selectBackward();">/\</button> <button class="error" style="float: right;" onClick="selectForward();">\/</button></p><br /><br /></div>
     <p><a href="{{ 'download' | prepend: site.baseurl }}" id="download-link">Download data</a></p>
 
   </div>
