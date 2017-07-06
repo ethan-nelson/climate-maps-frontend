@@ -30,7 +30,8 @@ title: Plots
     <label><input type="radio" name="period-selector" id="period-selector-mission" value="mission" onchange="changeperiod(); changetime();" checked="checked"><span class="checkable">Mission</span></label><br />
                       <label><input type="radio" name="period-selector" id="period-selector-year" value="year" onchange="changeperiod(); changetime();"><span class="checkable">Annual</span></label><br />
                       <label><input type="radio" name="period-selector" id="period-selector-month" value="month" onchange="changeperiod(); changetime();"><span class="checkable">Month</span></label></p>
-    <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <span id="time-options"></span></p></div>
+    <div name="time-div" styl="display: none; visibility: hidden;"><p><b>Time:</b> <span id="time-options"></span><br />
+    <button class="error" style="float: left;" onClick="selectForward();">\/</button> <button class="error" style="float: right;" onClick="selectBackward();">/\</button></p><br /><br /></div>
     <p><a href="{{ 'download' | prepend: site.baseurl }}" id="download-link">Download data</a></p>
 
 <script>
@@ -68,6 +69,26 @@ function changetime() {
         img.src = '{{ 'data/gpcp-' | prepend: site.baseurl }}'+newTime+'.png';
         oldTime = newTime;
     }
+}
+
+function selectBackward() {
+    var element = document.getElementById('time-selector');
+    if (element.selectedIndex != 0) {
+        element.options[element.selectedIndex - 1].selected = true;
+    } else {
+        element.options[element.options.length - 1].selected = true;
+    }
+    changetime();
+}
+
+function selectForward() {
+    var element = document.getElementById('time-selector');
+    if (element.selectedIndex < (element.options.length - 1)) {
+        element.options[element.selectedIndex + 1].selected = true;
+    } else {
+        element.options[0].selected = true;
+    }
+    changetime();
 }
 </script>
 
