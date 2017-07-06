@@ -24,7 +24,9 @@ title: Plots
   <div id="content">
     <h2>Plots</h2>
     <p><b>Product:</b> <select id="product-selector">
-                         <option value="rain">Rainfall</option>
+    {% for product in site.products %}
+                         <option value="{{ product[0] }}">{{ product[1] }}</option>
+    {% endfor %}
                        </select></p>
     <p><b>Period:</b><br />
     <label><input type="radio" name="period-selector" id="period-selector-mission" value="mission" onchange="changeperiod(); changetime();" checked="checked"><span class="checkable">Mission</span></label><br />
