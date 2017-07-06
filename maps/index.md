@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Maps
 ---
 <link rel="stylesheet" href="{{ 'static/leaflet-1.0.3/leaflet.css' | prepend: site.baseurl }}" />
 <script src="{{ 'static/leaflet-1.0.3/leaflet.js' | prepend: site.baseurl }}"></script>
