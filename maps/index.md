@@ -35,7 +35,7 @@ title: Maps
   <div id="map"></div>
   <div id="content">
     <h2>Interactive Maps</h2>
-    <p><b>Product:</b> <select id="product-selector">
+    <p><b>Product:</b> <select id="product-selector" onchange="changeperiod(); changetime();">
         {% for product in site.products %}
                          <option value="{{ product[0] }}">{{ product[1] }}</option>
         {% endfor %}
@@ -132,14 +132,17 @@ changeperiod();
 
 
 var oldTime = document.getElementById('time-selector').value;
-var geojson = L.geoJson.ajax('{{ 'data/gpcp-' | prepend: site.baseurl }}'+oldTime+'.geojson', {onEachFeature: onEachFeature, style: style});
+var oldProduct = document.getElementById('product-selector').value;
+var geojson = L.geoJson.ajax('{{ 'data/' | prepend: site.baseurl }}'+oldProduct+'-'+oldTime+'.geojson', {onEachFeature: onEachFeature, style: style});
 geojson.addTo(map)
 
 function changetime() {
     var newTime = document.getElementById('time-selector').value;
-    if (newTime != oldTime) {
-        geojson.refresh('{{ 'data/gpcp-' | prepend: site.baseurl }}'+newTime+'.geojson');
+    var newProduct = document.getElementById('product-selector').value;
+    if (newTime != oldTime | newProduct != oldProduct)  {
+        geojson.refresh('{{ 'data/' | prepend: site.baseurl }}'+newProduct+'-'+newTime+'.geojson');
         oldTime = newTime;
+        oldProduct = newProduct;
     }
 }
 

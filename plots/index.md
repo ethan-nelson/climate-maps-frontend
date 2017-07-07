@@ -23,7 +23,7 @@ title: Plots
   <div id="plot"></div>
   <div id="content">
     <h2>Plots</h2>
-    <p><b>Product:</b> <select id="product-selector">
+    <p><b>Product:</b> <select id="product-selector" onchange="changeperiod(); changetime();">
     {% for product in site.products %}
                          <option value="{{ product[0] }}">{{ product[1] }}</option>
     {% endfor %}
@@ -69,15 +69,17 @@ changeperiod();
 var img = document.createElement('img');
 var imgDiv = document.getElementById('plot');
 var oldTime = document.getElementById('time-selector').value;
-img.src = '{{ 'data/gpcp-' | prepend: site.baseurl }}'+oldTime+'.png';
+var oldProduct = document.getElementById('product-selector').value;
+img.src = '{{ 'data/' | prepend: site.baseurl }}'+oldProduct+'-'+oldTime+'.png';
 imgDiv.appendChild(img);
-
 
 function changetime() {
     var newTime = document.getElementById('time-selector').value;
-    if (newTime != oldTime) {
-        img.src = '{{ 'data/gpcp-' | prepend: site.baseurl }}'+newTime+'.png';
+    var newProduct = document.getElementById('product-selector').value;
+    if (newTime != oldTime | newProduct != oldProduct)  {
+        img.src = '{{ 'data/' | prepend: site.baseurl }}'+newProduct+'-'+newTime+'.png';
         oldTime = newTime;
+        oldProduct = newProduct;
     }
 }
 
