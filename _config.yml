@@ -18,5 +18,9 @@ url: "http://lecuyer.aos.wisc.edu" # the base hostname & protocol for your site
 markdown: kramdown
 
 products: [
-    ['rain', 'Rainfall']
+    ['gpcp', 'Rainfall'],
+    ['swcre_toa', 'SW Cloud Forcing TOA'],
+    ['lwcre_toa', 'LW Cloud Forcing TOA'],
+    ['swcre_sfc', 'SW Cloud Forcing Sfc'],
+    ['lwcre_sfc', 'LW Cloud Forcing Sfc']
 ]
